@@ -81,7 +81,7 @@
 				</div>
 			</button>
 			<div class="mt-8 flex justify-center gap-1">
-				Belum punya akun? <a href="/signup" class=" font-semibold">SignUp </a>
+				Belum punya akun? <a href="/" class=" font-semibold">SignUp </a>
 			</div>
 		</div>
 	</div>
