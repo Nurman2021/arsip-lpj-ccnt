@@ -1,8 +1,10 @@
 <script>
 	import Sidebar from '$lib/components/Sidebar.svelte';
 	import './styles.css';
-	import Auth from '$lib/components/Auth.svelte';
+	// import Login from './auth/Login.svelte';
+	// import Signup from './auth/Signup.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Auth from '$lib/components/Auth.svelte';
 
 	let hasSession = false;
 </script>
@@ -17,6 +19,7 @@
 	</div>
 {:else}
 	<Auth />
+	<!-- <Signup /> -->
 {/if}
 
 <style>

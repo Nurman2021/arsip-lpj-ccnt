@@ -1,6 +1,13 @@
 <script>
 	import wallpaper from '$lib/img/signInImage.png';
 
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
+
+	function handleLogin() {
+		dispatch('loginSubmit');
+	}
+
 	let username = '';
 	let password = '';
 </script>
@@ -80,7 +87,9 @@
 				</div>
 			</button>
 			<div class="mt-8 flex justify-center gap-1">
-				Belum punya akun? <a href="/" class=" font-semibold">SignUp </a>
+				Belum punya akun? <button class="font-semibold text-lpj-teal-300" on:click={handleLogin}
+					>SignUp
+				</button>
 			</div>
 		</div>
 	</div>
