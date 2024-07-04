@@ -9,6 +9,9 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Akun | Arsip LPJ</title>
+</svelte:head>
 {#if showLogin}
 	<Login on:loginSubmit={() => (showLogin = false)} />
 {:else}

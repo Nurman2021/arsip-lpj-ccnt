@@ -8,7 +8,7 @@
 	<div class="corner">
 		<a href="https://kit.svelte.dev">
 			<img src={logo} alt="SvelteKit" />
-		</a> 
+		</a>
 	</div>
 
 	<nav>
@@ -16,11 +16,11 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">Upload</a>
-			</li>
 			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
 				<a href="/sverdle">List</a>
+			</li>
+			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
+				<a href="/profile">Profile</a>
 			</li>
 		</ul>
 	</nav>
@@ -56,8 +56,6 @@
 		height: 2em;
 		object-fit: contain;
 	}
-
-
 
 	ul {
 		position: relative;

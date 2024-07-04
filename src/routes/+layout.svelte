@@ -1,12 +1,20 @@
 <script>
-	import Sidebar from '$lib/components/Sidebar.svelte';
 	import './styles.css';
-	// import Login from './auth/Login.svelte';
-	// import Signup from './auth/Signup.svelte';
+	import { onMount } from 'svelte';
+	import Sidebar from '$lib/components/Sidebar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Auth from '$lib/components/Auth.svelte';
+	import { isLoggedIn } from '$lib/auth';
 
 	let hasSession = false;
+
+	onMount(() => {
+		checkSession();
+	});
+
+	function checkSession() {
+		hasSession = isLoggedIn();
+	}
 </script>
 
 {#if hasSession}
@@ -19,7 +27,6 @@
 	</div>
 {:else}
 	<Auth />
-	<!-- <Signup /> -->
 {/if}
 
 <style>
