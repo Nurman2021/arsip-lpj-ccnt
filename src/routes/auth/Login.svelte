@@ -1,9 +1,10 @@
 <script>
-	import wallpaper from '$lib/img/signInImage.png';
-	import GoogleSign from '$lib/components/GoogleSign.svelte';
-	import { loginDefault } from '$lib/auth';
-
 	import { createEventDispatcher } from 'svelte';
+	import wallpaper from '$lib/img/signInImage.png';
+	import placeholder from '$lib/img/placeholder.png';
+	import GoogleSign from '$lib/components/GoogleSign.svelte';
+	import { loginDefault, setSessionToken, setUserData } from '$lib/auth';
+
 	const dispatch = createEventDispatcher();
 
 	function swap() {
@@ -11,8 +12,16 @@
 	}
 
 	async function handleLogin() {
-		const response = await loginDefault(username, password);
-		console.log(response);
+		try {
+			const response = await loginDefault(username, password);
+			console.log(response);
+			// setUserData(response.email, response.nra, placeholder);
+			// setSessionToken(response.token);
+			// window.location.href = '/';
+		} catch (error) {
+			console.error('Login failed:', error);
+			alert('Login failed. Please check your credentials and try again.');
+		}
 	}
 
 	let username = '';

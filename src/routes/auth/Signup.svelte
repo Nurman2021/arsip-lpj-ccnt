@@ -7,7 +7,10 @@
 		dispatch('signupSubmit');
 	}
 
-	let username = '';
+	let nra = '';
+	let no_telp = '';
+	let email = '';
+	let jenis_kelamin = '';
 	let password = '';
 </script>
 
@@ -23,6 +26,18 @@
 				<GoogleSign btnClass="w-full" />
 				<p class=" font-extrabold text-gray-300">or</p>
 			</div>
+			<div>
+				<label class="block text-gray-700" for="stambuk">Nra</label>
+				<input
+					type="text"
+					name="stambuk"
+					id=""
+					placeholder="Masukkan NRA / Email"
+					class="w-full px-4 py-3 rounded-2xl mt-2 border focus:outline-none"
+					required
+					bind:value={nra}
+				/>
+			</div>
 
 			<div>
 				<label class="block text-gray-700" for="stambuk">Email</label>
@@ -33,8 +48,39 @@
 					placeholder="Masukkan NRA / Email"
 					class="w-full px-4 py-3 rounded-2xl mt-2 border focus:outline-none"
 					required
-					bind:value={username}
+					bind:value={email}
 				/>
+			</div>
+
+			<div>
+				<label class="block text-gray-700" for="stambuk">Jenis kelamin</label>
+				<div class="flex items-center mb-4">
+					<input
+						id="default-radio-1"
+						type="radio"
+						value=""
+						name="default-radio"
+						class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+					/>
+					<label
+						for="default-radio-1"
+						class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Perempuan</label
+					>
+				</div>
+				<div class="flex items-center">
+					<input
+						checked
+						id="default-radio-2"
+						type="radio"
+						value=""
+						name="default-radio"
+						class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+					/>
+					<label
+						for="default-radio-2"
+						class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Laki - laki</label
+					>
+				</div>
 			</div>
 
 			<div class="mt-4">

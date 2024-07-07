@@ -1,27 +1,53 @@
 import { user } from './userStore';
 
 declare const google: any;
+// function onGoogleScriptLoad(decodeJwtResponse: any) {
+// 	try {
+// 		const handleCredentialResponse = (response: any) => {
+// 			const data = decodeJwtResponse(response.credential);
+// 			console.log(data);
+// 			setSessionToken(data.jti);
+// 			setUserData(data.email, data.sub, data.picture);
+// 		};
+// 		google.accounts.id.initialize({
+// 			client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+// 			callback: handleCredentialResponse
+// 		});
+// 		google.accounts.id.renderButton(document.getElementById('googleSignIn'), {
+// 			theme: 'outline',
+// 			size: 'large',
+// 			data_text: 'signin_with',
+// 			shape: 'pill',
+// 			logo_alignment: 'left'
+// 		});
+// 		google.accounts.id.prompt();
+// 	} catch {}
+// }
+
 function onGoogleScriptLoad(decodeJwtResponse: any) {
-	try {
-		const handleCredentialResponse = (response: any) => {
-			const data = decodeJwtResponse(response.credential);
-			console.log(data);
-			setSessionToken(data.jti);
-			setUserData(data.email, data.sub, data.picture);
-		};
-		google.accounts.id.initialize({
-			client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
-			callback: handleCredentialResponse
-		});
-		google.accounts.id.renderButton(document.getElementById('googleSignIn'), {
-			theme: 'outline',
-			size: 'large',
-			data_text: 'signin_with',
-			shape: 'pill',
-			logo_alignment: 'left'
-		});
-		google.accounts.id.prompt();
-	} catch {}
+	const handleCredentialResponse = (response: any) => {
+		const data = decodeJwtResponse(response.credential);
+		console.log(data);
+		setSessionToken(data.jti);
+		setUserData(data.email, data.sub, data.picture);
+		// window.location.href = '/';
+	};
+
+	// Initialize Google Sign-In
+	google.accounts.id.initialize({
+		client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+		callback: handleCredentialResponse
+	});
+
+	// Render Google Sign-In button
+	google.accounts.id.renderButton(document.getElementById('googleSignIn'), {
+		theme: 'outline',
+		size: 'large',
+		data_text: 'signin_with',
+		shape: 'pill',
+		logo_alignment: 'left'
+	});
+	google.accounts.id.prompt();
 }
 
 function decodeJwtResponse(token: string) {
@@ -53,22 +79,30 @@ async function loginDefault(login: string, password: string) {
 			throw new Error('login gagal');
 		}
 
-		const data = await response.json();
+		const data = response.json();
 		return data;
 	} catch (error: any) {
 		return { error: error.message };
 	}
 }
 
+function getSessionToken() {
+	return localStorage.getItem('authToken');
+}
+
 function isLoggedIn() {
-	const token = () => {
-		localStorage.getItem('authToken');
-	};
+	const token = getSessionToken();
+	console.log(token);
 	return Boolean(token);
 }
 
 function setSessionToken(token: any) {
 	localStorage.setItem('authToken', token);
+}
+
+function clearSessionToken() {
+	localStorage.removeItem('authToken');
+	localStorage.clear();
 }
 
 function setUserData(email: string, id: string, photo: string) {
@@ -79,4 +113,12 @@ function setUserData(email: string, id: string, photo: string) {
 		photo
 	}));
 }
-export { decodeJwtResponse, onGoogleScriptLoad, loginDefault, isLoggedIn };
+export {
+	decodeJwtResponse,
+	onGoogleScriptLoad,
+	loginDefault,
+	isLoggedIn,
+	clearSessionToken,
+	setSessionToken,
+	setUserData
+};

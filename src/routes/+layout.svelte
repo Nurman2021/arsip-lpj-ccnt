@@ -8,13 +8,16 @@
 
 	let hasSession = false;
 
-	onMount(() => {
-		checkSession();
-	});
+	// onMount(() => {
+	// 	checkSession();
+	// });
+	// if (hasSession) {
+	// 	window.location.href = '/';
+	// }
 
-	function checkSession() {
-		hasSession = isLoggedIn();
-	}
+	// function checkSession() {
+	// 	hasSession = isLoggedIn();
+	// }
 </script>
 
 {#if hasSession}

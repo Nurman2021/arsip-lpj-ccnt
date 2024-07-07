@@ -1,6 +1,6 @@
 <footer>
 	<p>
-		© Copyright 2024 by <a href="https://coconut.or.id/">Coconut Computer Club</a> Makassar
+		© 2024, Made with ❤️ by <a href="https://coconut.or.id/">Coconut Computer Club</a> Makassar
 	</p>
 </footer>
 

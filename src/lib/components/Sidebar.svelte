@@ -4,7 +4,7 @@
 	import github from '$lib/images/github.svg';
 </script>
 
-<aside class="flex flex-col bg-sky-600 items-center">
+<aside class="flex flex-col w-56 items-center">
 	<div class="corner">
 		<a href="https://kit.svelte.dev">
 			<img src={logo} alt="SvelteKit" />
@@ -12,7 +12,7 @@
 	</div>
 
 	<nav>
-		<ul class="flex flex-col">
+		<ul class="flex flex-wrap">
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
@@ -73,6 +73,9 @@
 	li {
 		position: relative;
 		height: 100%;
+		background-color: white;
+		display: flex;
+		width: 100%;
 	}
 
 	li[aria-current='page']::before {
